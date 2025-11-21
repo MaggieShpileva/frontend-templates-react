@@ -16,18 +16,26 @@ src/
 │   ├── Feature/           # Функциональные компоненты (разовые)
 │   │   ├── Banner/        # Баннер
 │   │   ├── Header/        # Шапка сайта
-│   │   └── Footer/        # Подвал сайта
-├── hooks/                 # Кастомные хуки
-├── mock/                  # Моковые данные для разработки
+│   │   ├── Footer/        # Подвал сайта
+│   │   ├── Layout/        # Компонент макета страницы
+│   │   ├── Error/         # Компонент ошибки
+│   │   └── NotFound/      # Компонент 404 страницы
+├── pages/                 # Страницы приложения (роутинг)
+│   ├── Home.tsx           # Главная страница
+│   ├── About.tsx          # Страница "О нас"
+│   ├── NotFound.tsx       # Страница 404
+│   └── Error.tsx          # Страница ошибки
+├── hooks/                 # Кастомные хуки (опционально, создавать по необходимости)
+├── mock/                  # Моковые данные для разработки (опционально)
 ├── styles/                # Глобальные SCSS стили
 │   ├── _colors.scss       # Цветовая палитра
 │   ├── _mixins.scss       # SCSS миксины (breakpoints, etc.)
 │   ├── _typography.scss   # Типографика
 │   ├── _variables.scss    # Переменные
 │   └── index.scss         # Главный файл стилей (экспорт всех partials)
-├── types/                 # TypeScript типы
+├── types/                 # TypeScript типы (опционально, создавать по необходимости)
 │   └── global.d.ts        # Глобальные типы
-├── utils/                 # Утилитарные функции
+├── utils/                 # Утилитарные функции (опционально, создавать по необходимости)
 ├── assets/                # Статические ресурсы проекта
 │   ├── icons/             # SVG иконки (импортируются как компоненты)
 │   └── images/            # Изображения (PNG, JPG, WebP)
@@ -39,6 +47,8 @@ public/                    # Публичные файлы (доступны п�
 ├── icons/                 # Статические иконки
 └── images/                # Статические изображения
 ```
+
+<a id="разница-между-srcassets-и-public"></a>
 
 ### Разница между `src/assets/` и `public/`
 
@@ -55,8 +65,8 @@ public/                    # Публичные файлы (доступны п�
 **Пример:**
 
 ```typescript
-import Logo from '@assets/images/logo.svg?react';
-import heroImage from '@assets/images/hero.jpg';
+import SVG_logoIcon from '@assets/icons/logo.svg?react';
+import PNG_heroImage from '@assets/images/hero.jpg';
 ```
 
 #### `public/` - статические файлы, доступные по URL
@@ -79,6 +89,10 @@ import heroImage from '@assets/images/hero.jpg';
 
 - **`src/assets/`** → для ресурсов, используемых в React компонентах (иконки, изображения, которые импортируются)
 - **`public/`** → для файлов, которые должны быть доступны по фиксированному URL (favicon, шрифты, robots.txt, manifest.json)
+
+**⚠️ Важно**: Если нужно импортировать SVG как React компонент (для стилизации через `className`), файл должен находиться в `src/assets/`, а не в `public/`.
+
+> **Примечание**: Подробные правила импорта и именования статических файлов см. в [coding-standards.md](./coding-standards.md#статические-файлы).
 
 ### Именование файлов
 

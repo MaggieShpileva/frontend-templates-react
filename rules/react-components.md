@@ -11,10 +11,11 @@
 ### Базовая структура компонента
 
 ```typescript
-import type { FC, ReactNode, useState } from 'react'
-import clsx from 'clsx'
-import { Button } from '@components/UI'
-import styles from './ComponentName.module.scss'
+import { useState } from 'react';
+import type { FC, ReactNode } from 'react';
+import clsx from 'clsx';
+import { Button } from '@components/UI';
+import styles from './ComponentName.module.scss';
 
 type ComponentNameProps = {
   title: string

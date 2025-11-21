@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
-import SVG_ViteLogo from '@public/vite.svg?react';
 import SVG_ReactLogo from '@assets/react.svg?react';
 import styles from './Header.module.scss';
 
@@ -10,7 +9,7 @@ export const Header: FC = () => {
     <header className={styles.header}>
       <div className={styles.headerContainer}>
         <div className={styles.logos}>
-          <SVG_ViteLogo className={styles.logo} />
+          <img src={'/vite.svg'} alt="Vite" /> {/* путь к файлу из public */}
           <SVG_ReactLogo className={clsx(styles.logo, styles.reactLogo)} />
         </div>
         <nav className={styles.nav} aria-label="Main navigation">
