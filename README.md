@@ -36,9 +36,9 @@ docker compose up --build
 
 ## 📚 Документация
 
-- [Стандарты кодирования](./rules/coding-standards.md)
-- [Соглашения проекта](./rules/project-conventions.md)
-- [React компоненты](./rules/react-components.md)
+- [Правила кода](./rules/coding-standards.md)
+- [Структура и правила проекта](./rules/project-conventions.md)
+- [React-компоненты](./rules/react-components.md)
 - [Линтинг и форматирование](./rules/linting-formatting.md)
 - [Git Workflow](./rules/git-workflow.md)
 
