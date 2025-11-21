@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Проверка типов TypeScript
+npx tsc --noEmit || exit 1
+
+# Проверка линтинга и форматирования через lint-staged
+npx lint-staged
