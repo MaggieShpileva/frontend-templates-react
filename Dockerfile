@@ -3,30 +3,32 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Копируем файлы зависимостей
-COPY package.json package-lock.json ./
+# Копируем файлы зависимостей из папки project
+COPY project/package.json project/package-lock.json ./
 
 # Устанавливаем зависимости
 RUN npm ci
 
-# Копируем исходный код
-COPY . .
+# Копируем исходный код из папки project
+COPY project/ .
 
 # Собираем приложение
 RUN npm run build
 
 # Stage 2: Production
-FROM nginx:alpine
+FROM node:20-alpine
 
-# Копируем собранное приложение в nginx
-COPY --from=builder /app/dist /usr/share/nginx/html
+WORKDIR /app
 
-# Копируем конфигурацию nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Устанавливаем serve глобально
+RUN npm install -g serve
 
-# Открываем порт 80
-EXPOSE 80
+# Копируем собранное приложение
+COPY --from=builder /app/dist ./dist
 
-# Запускаем nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Открываем порт 3000
+EXPOSE 3000
+
+# Запускаем serve с поддержкой SPA роутинга
+CMD ["serve", "-s", "dist", "-l", "3000"]
 
